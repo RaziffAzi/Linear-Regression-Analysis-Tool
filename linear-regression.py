@@ -58,9 +58,9 @@ if page == 'Data Input':
         # Initialize empty DataFrame if not exists
         if "manual_data" not in st.session_state:
             st.session_state.manual_data = pd.DataFrame({
-                "Feature1": [1, 2],
-                "Feature2": [3, 4],
-                "Target": [5, 6]
+                "Feature1": np.array([1, 2]),
+                "Feature2": np.array([3, 4]),
+                "Target": np.array([5, 6])
             })
 
         # Add new column dynamically
@@ -83,8 +83,10 @@ if page == 'Data Input':
         # Load button
         if st.button("Load Data"):
             st.session_state.data = st.session_state.manual_data.copy()
+            st.session_state.data = st.session_state.data.astype(float)
             st.success("Data loaded successfully!")
             st.dataframe(st.session_state.data)
+            st.write(st.session_state.data.dtypes)
 
     elif option == 'Upload CSV File':
         st.header("Upload CSV File")
