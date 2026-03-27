@@ -86,8 +86,6 @@ if page == 'Data Input':
             st.session_state.data = st.session_state.data.astype(float)
             st.success("Data loaded successfully!")
             st.dataframe(st.session_state.data)
-            st.write(st.session_state.data.dtypes)
-
     elif option == 'Upload CSV File':
         st.header("Upload CSV File")
         uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
